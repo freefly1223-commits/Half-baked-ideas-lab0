@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Half Baked Ideas Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo">HALF BAKED</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="recipe.html">Recipe</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="#donate">Donate</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="neon-circle">
+      <h1 class="neon-title">
+        <span class="pink">HALF</span>
+        <span class="cyan">BAKED</span>
+      </h1>
+      <div class="neon-banner">IDEAS LAB</div>
+      <p class="tagline">It's not a bad idea.<br>It's just not finished yet.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Quick Idea Form -->
+    <section class="card">
+      <h2 class="section-title">Throw an idea in the oven</h2>
+      <form id="quick-form" action="thanks.html">
+        <input type="text" name="title" placeholder="Idea title..." required>
+        <textarea name="description" placeholder="Describe your half-baked idea..." rows="4" required></textarea>
+        <button type="submit" class="btn neon-btn">Bake It →</button>
+      </form>
+    </section>
+
+    <!-- Big CTA -->
+    <section class="cta-section">
+      <h2>Got a half-baked idea?</h2>
+      <p>Use our full Recipe form to cook it properly.</p>
+      <a href="recipe.html" class="btn neon-btn large">Start the Recipe →</a>
+    </section>
+
+    <!-- Contact / Text -->
+    <section class="card contact-card">
+      <h2 class="section-title">Text the Lab</h2>
+      <p class="phone-number">
+        <a href="sms:+15757072480">(575) 707-2480</a>
+      </p>
+      <p class="contact-note">Got questions or want to talk about your idea? Just text us.</p>
+    </section>
+
+    <!-- Donate -->
+    <section id="donate" class="card donate-card">
+      <h2 class="section-title">Keep the Lab Running</h2>
+      <p>Support the Half Baked Ideas Lab. Every bit helps us keep the lights (and neon) on.</p>
+      
+      <div class="donation-options">
+        <button class="donate-btn" data-amount="1">$1</button>
+        <button class="donate-btn" data-amount="5">$5</button>
+        <button class="donate-btn" data-amount="10">$10</button>
+        <button class="donate-btn" data-amount="15">$15</button>
+        <button class="donate-btn" data-amount="20">$20</button>
+      </div>
+
+      <p class="donate-note">Minimum $1 • Maximum $20</p>
+      <p class="donate-email">Or email us at <a href="mailto:Halfbakedideaslab@gmail.com">Halfbakedideaslab@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Half Baked Ideas Lab • It's not a bad idea. It's just not finished yet.</p>
+    <p class="tiktok">TikTok: @halfbakedideaslab</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
