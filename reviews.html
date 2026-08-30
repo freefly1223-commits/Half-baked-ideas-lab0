@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews – Half Baked Ideas Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-logo">HALF BAKED</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="recipe.html">Recipe</a>
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="index.html#donate">Donate</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1 class="section-title" style="text-align:center; margin-bottom:2rem;">What People Are Saying</h1>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"I sent in a half-baked idea and they actually helped me cook it. Wild."</p>
+      <div class="author">— Jordan M.</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Finally a place that doesn’t make you feel dumb for having unfinished ideas."</p>
+      <div class="author">— Sam T.</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p>"The recipe form is genius. Made me think about my idea in a whole new way."</p>
+      <div class="author">— Alex R.</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Texted the number and got a real reply. Not a bot. Instant respect."</p>
+      <div class="author">— Riley K.</div>
+    </div>
+
+    <!-- Leave a Review -->
+    <section class="card" style="margin-top:3rem;">
+      <h2 class="section-title">Leave a Review</h2>
+      <form id="review-form">
+        <input type="text" id="reviewer-name" placeholder="Your name" required>
+        <select id="rating" required>
+          <option value="">Rating</option>
+          <option value="5">★★★★★ (5)</option>
+          <option value="4">★★★★☆ (4)</option>
+          <option value="3">★★★☆☆ (3)</option>
+          <option value="2">★★☆☆☆ (2)</option>
+          <option value="1">★☆☆☆☆ (1)</option>
+        </select>
+        <textarea id="review-text" rows="4" placeholder="Tell us what you think..." required></textarea>
+        <button type="submit" class="btn neon-btn">Submit Review</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Half Baked Ideas Lab</p>
+    <p class="tiktok">TikTok: @halfbakedideaslab</p>
+  </footer>
+
+  <script>
+    document.getElementById('review-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('reviewer-name').value;
+      const rating = document.getElementById('rating').value;
+      const text = document.getElementById('review-text').value;
+
+      const subject = encodeURIComponent("New Review for Half Baked Ideas Lab");
+      const body = encodeURIComponent(`Name: ${name}\nRating: \( {rating} stars\n\nReview:\n \){text}`);
+
+      window.location.href = `mailto:Halfbakedideaslab@gmail.com?subject=\( {subject}&body= \){body}`;
+      
+      setTimeout(() => {
+        window.location.href = "thanks.html";
+      }, 800);
+    });
+  </script>
+</body>
+</html>
