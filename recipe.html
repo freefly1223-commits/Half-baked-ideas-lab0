@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Half Baked Idea Recipe – Half Baked Ideas Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-logo">HALF BAKED</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="recipe.html" class="active">Recipe</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="index.html#donate">Donate</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="recipe-header">
+      <h1>YOUR HALF BAKED IDEA RECIPE</h1>
+      <p style="color: var(--muted);">Fill this out and send it to the Lab</p>
+    </div>
+
+    <form id="recipe-form" class="card">
+      <!-- IDEA -->
+      <div class="recipe-section">
+        <label>IDEA:</label>
+        <p class="hint">What are we cooking?</p>
+        <textarea id="idea" name="idea" rows="4" placeholder="Describe your idea..." required></textarea>
+      </div>
+
+      <!-- THE WHY -->
+      <div class="recipe-section">
+        <label>THE WHY:</label>
+        <p class="hint">Why does this idea matter?</p>
+        <textarea id="why" name="why" rows="4" placeholder="Why should this exist?" required></textarea>
+      </div>
+
+      <!-- WHO'S HUNGRY -->
+      <div class="recipe-section">
+        <label>WHO'S HUNGRY:</label>
+        <p class="hint">Who might actually want this?</p>
+        <textarea id="who" name="who" rows="3" placeholder="Who is this for?" required></textarea>
+      </div>
+
+      <!-- THE GOOD STUFF -->
+      <div class="recipe-section">
+        <label>THE GOOD STUFF:</label>
+        <p class="hint">What's already working?</p>
+        <textarea id="good" name="good" rows="3" placeholder="What's strong about this idea?"></textarea>
+      </div>
+
+      <!-- THE SOGGY PARTS -->
+      <div class="recipe-section">
+        <label>THE SOGGY PARTS:</label>
+        <p class="hint">What needs work?</p>
+        <textarea id="soggy" name="soggy" rows="3" placeholder="What still needs cooking?"></textarea>
+      </div>
+
+      <!-- Contact info -->
+      <div class="recipe-section">
+        <label>Your Name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="What should we call you?">
+      </div>
+
+      <div class="recipe-section">
+        <label>Your Email (optional)</label>
+        <input type="email" id="email" name="email" placeholder="So we can reply">
+      </div>
+
+      <button type="submit" class="btn neon-btn large">Send Recipe to the Lab →</button>
+    </form>
+
+    <p style="text-align:center; color:var(--muted); margin-top:1.5rem; font-size:0.9rem;">
+      Or text us at <a href="sms:+15757072480" style="color:var(--cyan);">(575) 707-2480</a>
+    </p>
+  </main>
+
+  <footer>
+    <p>© Half Baked Ideas Lab</p>
+    <p class="tiktok">TikTok: @halfbakedideaslab</p>
+  </footer>
+
+  <script>
+    document.getElementById('recipe-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const idea = document.getElementById('idea').value;
+      const why = document.getElementById('why').value;
+      const who = document.getElementById('who').value;
+      const good = document.getElementById('good').value;
+      const soggy = document.getElementById('soggy').value;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      const subject = encodeURIComponent("New Half Baked Idea Recipe");
+      const body = encodeURIComponent(
+`HALF BAKED IDEA RECIPE
+=======================
+
+IDEA:
+${idea}
+
+THE WHY:
+${why}
+
+WHO'S HUNGRY:
+${who}
+
+THE GOOD STUFF:
+${good}
+
+THE SOGGY PARTS:
+${soggy}
+
+-----------------------
+Name: ${name || "Not provided"}
+Email: ${email || "Not provided"}
+`
+      );
+
+      window.location.href = `mailto:Halfbakedideaslab@gmail.com?subject=\( {subject}&body= \){body}`;
+      
+      // Redirect to thanks page after a short delay
+      setTimeout(() => {
+        window.location.href = "thanks.html";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
