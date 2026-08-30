@@ -9,6 +9,6 @@ document.querySelectorAll('.donate-btn').forEach(btn => {
     const subject = encodeURIComponent(`Donation of \[ {amount} to Half Baked Ideas Lab`);
     const body = encodeURIComponent(`Hi Lab,\n\nI'd like to donate \]{amount}.\n\nThank you!`);
 
-    window.location.href = `mailto:Halfbakedideaslab0@gmail.com?subject=\( {subject}&body= \){body}`;
+    window.location.href = `mailto:halfbakedideaslab0@gmail.com?subject=\( {subject}&body= \){body}`;
   });
 });
