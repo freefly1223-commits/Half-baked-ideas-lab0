@@ -6,6 +6,17 @@
   <title>Half Baked Idea Recipe – Half Baked Ideas Lab</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("9o57puv3RWmZM35f5"); // Your Public Key
+    })();
+  </script>
+  
+
 </head>
 <body>
   <div class="glow-bg"></div>
@@ -64,14 +75,16 @@
 
       <!-- Contact info -->
       <div class="recipe-section">
-        <label>Your Name (optional)</label>
+        <label>Your Name</label>
         <input type="text" id="name" name="name" placeholder="What should we call you?">
       </div>
 
+      
       <div class="recipe-section">
-        <label>Your Email (optional)</label>
-        <input type="email" id="email" name="email" placeholder="So we can reply">
+        <label>Your Email</label>
+        <input type="email" id="email" name="email" placeholder="So we can send your 72hr breakdown" required>
       </div>
+      
 
       <button type="submit" class="btn neon-btn large">Send Recipe to the Lab →</button>
     </form>
@@ -86,51 +99,39 @@
     <p class="tiktok">TikTok: @halfbakedideaslab</p>
   </footer>
 
+  
   <script>
     document.getElementById('recipe-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const idea = document.getElementById('idea').value;
-      const why = document.getElementById('why').value;
-      const who = document.getElementById('who').value;
-      const good = document.getElementById('good').value;
-      const soggy = document.getElementById('soggy').value;
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-
-      const subject = encodeURIComponent("New Half Baked Idea Recipe");
-      const body = encodeURIComponent(
-`HALF BAKED IDEA RECIPE
-=======================
-
-IDEA:
-${idea}
-
-THE WHY:
-${why}
-
-WHO'S HUNGRY:
-${who}
-
-THE GOOD STUFF:
-${good}
-
-THE SOGGY PARTS:
-${soggy}
-
------------------------
-Name: ${name || "Not provided"}
-Email: ${email || "Not provided"}
-`
-      );
-
-      window.location.href = `mailto:Halfbakedideaslab0@gmail.com?subject=\( {subject}&body= \){body}`;
+      e.preventDefault(); // Stops the Gmail redirect
       
-      // Redirect to thanks page after a short delay
-      setTimeout(() => {
-        window.location.href = "thanks.html";
-      }, 1000);
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending to the Lab...';
+      
+      const templateParams = {
+        from_name: document.getElementById('name').value || 'Anonymous Baker',
+        reply_to: document.getElementById('email').value,
+        idea: document.getElementById('idea').value,
+        why: document.getElementById('why').value,
+        hungry: document.getElementById('who').value,
+        good: document.getElementById('good').value,
+        soggy: document.getElementById('soggy').value
+      };
+      
+      emailjs.send('service_to0i8ox', 'ofjpry5', templateParams)
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+           window.location.href = "thanks.html"; // No Gmail popup — goes straight here
+        }, function(error) {
+           console.log('FAILED...', error);
+           alert('Oops! The lab had a spill. Please try again or text us at (575) 707-2480');
+           submitBtn.disabled = false;
+           submitBtn.innerText = 'Send Recipe to the Lab →';
+        });
     });
   </script>
+  
+
 </body>
 </html>
